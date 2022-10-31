@@ -1,0 +1,9 @@
+*Release
+*Debug
+*x64
+*.vs
+*out
+*CMakeFiles
+*deps
+*ExampleSystems
+*CMakeSettings.json
