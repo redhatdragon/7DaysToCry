@@ -14,6 +14,7 @@ target_include_directories(${APP_NAME} PRIVATE
 
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+#set(RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/")
 set(APP_TYPE_3D "")
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/EchoEngine)
 target_link_libraries(${APP_NAME}
@@ -28,13 +29,13 @@ IF (WIN32)
 	add_custom_command(TARGET ${APP_NAME} POST_BUILD
 		COMMAND xcopy /s /d /y 
 			"\"${CMAKE_CURRENT_SOURCE_DIR}/data\""
-			"\"${CMAKE_BINARY_DIR}/data/*\""
+			"\"${CMAKE_BINARY_DIR}/$<CONFIGURATION>/data/*\""
 	)
 ELSE()
 	add_custom_command(TARGET ${APP_NAME} POST_BUILD
 		COMMAND cp -u 
 			"\"${CMAKE_CURRENT_SOURCE_DIR}/data\""
-			"\"${CMAKE_BINARY_DIR}/data/*\""
+			"\"${CMAKE_BINARY_DIR}/$<CONFIGURATION>/data/*\""
 	)
 ENDIF()
 
